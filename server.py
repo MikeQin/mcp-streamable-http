@@ -1,6 +1,15 @@
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("Demo-Server", stateless_http=True)
+mcp = FastMCP(
+    name="Demo-Server",
+    stateless_http=True,
+    host="127.0.0.1",      # Set host here
+    port=8080,             # Set port here
+    log_level="INFO",      # Optional
+)
+
+def authenticate():
+    pass
 
 @mcp.tool(description="Sum two numbers")
 def add(a: int, b: int) -> int:

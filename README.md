@@ -13,8 +13,30 @@ source .venv/Scripts/activate
 # Install dependencies
 uv add "mcp[cli]" httpx
 
+# OAuth
+uv pip install authlib starlette uvicorn python-dotenv
+uv pip install itsdangerous
+
 # Run
 uv run server.py
+```
+
+### Claude Config
+
+claude_desktop_config.json
+```json
+{
+  "mcpServers": {
+    "add_server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://localhost:8080/mcp/"
+      ]
+    }
+  }
+}
 ```
 
 ### Run Scripts and Client
@@ -34,3 +56,7 @@ npx @modelcontextprotocol/inspector uvx --directory "C:\\dev\\mcp-projects\\weat
 # For example
 npx @modelcontextprotocol/inspector uvx mcp-server-git --repository ~/code/mcp/servers.git
 ```
+
+### Simple Auth
+
+https://github.com/modelcontextprotocol/python-sdk/tree/main/examples/servers/simple-auth
